@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="black" class="lenis">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <script>
+    // GitHub Pages Single Page App routing restoration
+    (function (l) {
+      if (l.search[1] === '/') {
+        var decoded = l.search.slice(1).split('&').map(function (s) {
+          return s.replace(/~and~/g, '&');
+        }).join('?');
+        window.history.replaceState(null, null,
+          l.pathname.slice(0, -1) + decoded + l.hash
+        );
+      }
+    }(window.location));
+
+    // Dynamic base path & resource interceptor for GitHub Pages subpaths
+    (function () {
+      var segments = window.location.pathname.split('/').filter(Boolean);
+      var base = '';
+      if (window.location.hostname.endsWith('github.io') && segments.length > 0) {
+        base = '/' + segments[0];
+      }
+      window.__BASE_PATH__ = base;
+      window.__getPath = function () {
+        var p = window.location.pathname;
+        if (window.__BASE_PATH__ && p.startsWith(window.__BASE_PATH__)) {
+          return p.slice(window.__BASE_PATH__.length) || '/';
+        }
+        return p;
+      };
+
+      if (base) {
+        var imgProto = HTMLImageElement.prototype;
+        var origSrcSet = Object.getOwnPropertyDescriptor(imgProto, 'src').set;
+        var origSrcGet = Object.getOwnPropertyDescriptor(imgProto, 'src').get;
+        Object.defineProperty(imgProto, 'src', {
+          set: function (val) {
+            if (typeof val === 'string' && val.startsWith('/') && !val.startsWith(base + '/')) {
+              val = base + val;
+            }
+            return origSrcSet.call(this, val);
+          },
+          get: origSrcGet,
+          configurable: true
+        });
+
+        var origFetch = window.fetch;
+        if (origFetch) {
+          window.fetch = function (input, init) {
+            if (typeof input === 'string' && input.startsWith('/') && !input.startsWith(base + '/')) {
+              input = base + input;
+            }
+            return origFetch.call(this, input, init);
+          };
+        }
+
+        var origOpen = XMLHttpRequest.prototype.open;
+        if (origOpen) {
+          XMLHttpRequest.prototype.open = function (method, url) {
+            if (typeof url === 'string' && url.startsWith('/') && !url.startsWith(base + '/')) {
+              url = base + url;
+            }
+            return origOpen.apply(this, [method, url].concat(Array.prototype.slice.call(arguments, 2)));
+          };
+        }
+
+        var mediaProto = HTMLMediaElement.prototype;
+        var origMediaSet = Object.getOwnPropertyDescriptor(mediaProto, 'src').set;
+        var origMediaGet = Object.getOwnPropertyDescriptor(mediaProto, 'src').get;
+        Object.defineProperty(mediaProto, 'src', {
+          set: function (val) {
+            if (typeof val === 'string' && val.startsWith('/') && !val.startsWith(base + '/')) {
+              val = base + val;
+            }
+            return origMediaSet.call(this, val);
+          },
+          get: origMediaGet,
+          configurable: true
+        });
+
+        var origPush = history.pushState;
+        history.pushState = function (state, title, url) {
+          if (typeof url === 'string' && url.startsWith('/') && !url.startsWith(base + '/')) {
+            url = base + (url === '/' ? '/' : url);
+          }
+          return origPush.call(this, state, title, url);
+        };
+        var origReplace = history.replaceState;
+        history.replaceState = function (state, title, url) {
+          if (typeof url === 'string' && url.startsWith('/') && !url.startsWith(base + '/')) {
+            url = base + (url === '/' ? '/' : url);
+          }
+          return origReplace.call(this, state, title, url);
+        };
+      }
+    })();
+  </script>
+  <meta name="description" content="Ritesh Parmar — DOT NET Backend Developer Portfolio">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Ritesh Parmar — DOT NET Backend Developer Portfolio">
+  <meta property="og:description"
+    content="Ritesh Parmar — DOT NET Backend Developer Portfolio | Scalable Systems & High-Throughput APIs">
+  <meta property="og:url" content="/">
+  <meta property="og:image" content="./characters/hero-character-og.png">
+  <meta property="og:image:secure_url" content="./characters/hero-character-og.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Ritesh Parmar — DOT NET Backend Developer Portfolio">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Ritesh Parmar — DOT NET Backend Developer Portfolio">
+  <meta name="twitter:description"
+    content="Ritesh Parmar — DOT NET Backend Developer Portfolio | Scalable Systems & High-Throughput APIs">
+  <meta name="twitter:image" content="./characters/hero-character-og.png">
+  <meta name="twitter:image:alt" content="Ritesh Parmar — DOT NET Backend Developer Portfolio">
+  <link rel="icon" type="image/svg+xml" href="./logo.svg">
+  <link rel="preload" as="image" href="./assets/images/about-logo-photo-mask-b3758802.webp" fetchpriority="high">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link rel="stylesheet" href="./assets/css/css2-06baea8b.css">
+  <title>Ritesh Parmar — DOT NET Backend Developer</title>
+  <script type="module" crossorigin="" src="./assets/js/index-CSOIrs4g.js"></script>
+  <link rel="stylesheet" crossorigin="" href="./assets/css/index-aDxWU64m-04c3f0e5.css">
+</head>
+
+<body>
+  <div id="root">
+    <main class="page page--design page--intro-explore page--surged">
+      <div class="case-exit-veil" aria-hidden="true"></div>
+      <div class="intro-loader intro-loader--enter intro-loader--fade intro-loader--done" aria-hidden="true"><svg
+          aria-hidden="true" class="intro-loader-logo" fill="none" viewBox="0 0 24 22"
+          xmlns="http://www.w3.org/2000/svg">
+          <path class="intro-loader-logo__part intro-loader-logo__part--top"
+            d="M0 0H8.5L11 2.5V8.5L8.5 11H0V0ZM3.2 3.2H7.8V7.8H3.2V3.2Z" fill="currentColor"></path>
+          <path class="intro-loader-logo__part intro-loader-logo__part--bottom"
+            d="M0 11H3.2V22H0V11ZM3.2 11H7.5L11 22H7.2L4.6 14.5H3.2V22H0V11Z" fill="currentColor"></path>
+          <path class="intro-loader-logo__part intro-loader-logo__part--zero"
+            d="M13 0H21.5L24 2.5V10.5L21.5 13H16.2V22H13V0ZM16.2 3.2H20.8V9.8H16.2V3.2Z" fill="currentColor"
+            fill-rule="evenodd"></path>
+        </svg><span class="intro-transition-dot" aria-hidden="true"></span>
+        <div class="intro-transition-character" aria-hidden="true">
+          <div class="intro-transition-character-clip"><img class="intro-transition-character-image" alt=""
+              src="./assets/images/hero-character-ad83d786.webp"><span class="intro-transition-ring"></span></div>
+        </div>
+      </div>
+      <header class="site-header" aria-label="Main navigation" style="height: 78px;">
+        <div class="brand-area"><span class="logo-link" data-click-burst="true"><span class="logo" aria-hidden="true"
+              style="--fill-local-y: 82.7px;"></span></span><span class="header-location" data-click-burst="true"
+            style="--fill-local-y: 74.6px;"><img aria-hidden="true" alt=""
+              src="./assets/images/location-72857920.svg">Vadodara, India</span></div>
+        <nav class="tabs" aria-label="Portfolio sections"><span class="tabs-indicator"
+            style="translate: 0px -50%; width: 61px; --fill-local-y: 77.0px;"></span><button aria-current="page"
+            data-click-burst="" type="button" style="--fill-local-y: 77.0px;">Design</button><button
+            data-click-bounce="" type="button" style="--fill-local-y: 77.0px;">About</button></nav>
+        <div class="header-contact" aria-label="Contact links"><button class="email-copy" type="button"
+            data-click-burst="true" style="--fill-local-y: 74.6px;"><span>ritesh.parmar1599@gmail.com</span></button><a
+            class="social-link" href="https://github.com/Riteshparmar15" target="_blank" rel="noreferrer"
+            aria-label="GitHub" data-click-bounce="true" style="--fill-local-y: 82.0px;"><img aria-hidden="true" alt=""
+              src="./icons/github.svg"></a><a class="social-link"
+            href="https://www.linkedin.com/in/ritesh-parmar-13ab7a23a/" target="_blank" rel="noreferrer"
+            aria-label="LinkedIn" data-click-bounce="true" style="--fill-local-y: 82.0px;"><img aria-hidden="true"
+              alt="" src="./assets/images/linkedin-40d047b6.svg"></a></div><button class="header-info-toggle"
+          type="button" aria-expanded="false" aria-label="Show contact info" data-click-bounce="true"><span
+            class="header-info-toggle__i" aria-hidden="true"><span class="header-info-toggle__i-dot"></span><span
+              class="header-info-toggle__i-stem"></span></span></button>
+        <div class="header-info-panel" aria-hidden="true">
+          <div class="header-info-panel__inner"><button class="email-copy" type="button" data-click-burst="true"
+              style="--fill-local-y: 79.0px;"><span>ritesh.parmar1599@gmail.com</span></button>
+            <div class="header-info-panel__socials">
+              <a class="social-link" href="https://github.com/Riteshparmar15" target="_blank" rel="noreferrer"
+                aria-label="GitHub" tabindex="-1" data-click-bounce="true" style="--fill-local-y: 79.0px;"><img
+                  aria-hidden="true" alt="" src="./icons/github.svg"></a><a class="social-link"
+                href="https://www.linkedin.com/in/ritesh-parmar-13ab7a23a/" target="_blank" rel="noreferrer"
+                aria-label="LinkedIn" tabindex="-1" data-click-bounce="true" style="--fill-local-y: 79.0px;"><img
+                  aria-hidden="true" alt="" src="./assets/images/linkedin-40d047b6.svg"></a>
+            </div>
+          </div>
+        </div>
+      </header><button class="header-info-scrim" type="button" tabindex="-1" aria-hidden="true"></button><button
+        class="case-back" type="button" tabindex="-1" aria-hidden="true" aria-label="Back to gallery"
+        data-click-bounce="true"><svg class="case-back__arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 12H6M12 5l-7 7 7 7"></path>
+        </svg><svg class="case-back__home" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 11.5 12 5l8 6.5"></path>
+          <path d="M6 10.2V19.5h12V10.2"></path>
+          <path d="M10.2 19.5v-4.4h3.6v4.4"></path>
+        </svg><span class="case-back__label">Gallery</span></button>
+      <section class="work-hero" aria-label="Product design work"
+        style="--hero-scene-tilt-y: 0.00000; --hero-cursor-x: 0.0000; --hero-cursor-y: 0.0000;">
+        <div class="hero-intro">
+          <h1 class="sr-only">Ritesh — DOT NET Backend Developer</h1>
+          <div class="sr-only" aria-label="Profile highlights"><span>DOT NET Backend Developer</span><span>Clean Code ·
+              Reliable APIs · Scalable Systems</span></div>
+        </div>
+        <div class="screen-wheel" aria-hidden="false">
+          <div class="carousel-stage"><canvas class="carousel-canvas" aria-label="Rotating 3D project carousel"
+              data-engine="three.js r185" width="1920" height="1082"></canvas></div>
+          <div class="wheel-lens-blur wheel-lens-blur--left" aria-hidden="true"></div>
+          <div class="wheel-lens-blur wheel-lens-blur--right" aria-hidden="true"></div>
+        </div>
+      </section>
+      <div class="hero-marquee" aria-hidden="true">
+        <div class="hero-marquee__track"><span class="hero-marquee__copy">DOT NET BACKEND DEVELOPER · CLEAN CODE ·
+            RELIABLE
+            APIS · SCALABLE SYSTEMS · </span><span class="hero-marquee__copy">DOT NET BACKEND DEVELOPER · CLEAN CODE ·
+            RELIABLE APIS · SCALABLE SYSTEMS · </span></div>
+      </div>
+      <div class="case-stack" id="selected-work">
+        <section aria-label="Selected product design case 1" class="case-section" data-case-index="0"
+          data-case-id="pcos-management-app" id="selected-work-start"
+          style="z-index: 5; --case-ink: #dd3b86; --case-reveal: 0.000;"><a class="explore-cue"
+            href="#selected-work-start" aria-label="Explore selected work"><span>Explore</span><span
+              class="explore-arrow" aria-hidden="true"></span></a>
+          <div class="case-blowout" aria-hidden="true" style="display: none;">
+            <div class="case-blowout__sheet"></div>
+            <div class="case-blowout__outer"></div>
+            <div class="case-blowout__inner"></div><span class="case-blowout__tick case-blowout__tick--t"></span><span
+              class="case-blowout__tick case-blowout__tick--b"></span><span
+              class="case-blowout__tick case-blowout__tick--l"></span><span
+              class="case-blowout__tick case-blowout__tick--r"></span>
+          </div>
+          <div class="case-frame"><span class="case-number" aria-hidden="true">case 01</span>
+            <div class="case-phone-mask" aria-hidden="true" style="display: none;"><video class="case-phone-video"
+                src="./aspect-phone.mp4?v=7" playsinline="" preload="auto" aria-hidden="true"></video><video
+                class="case-phone-video" src="./aspect-phone-reversed.mp4?v=7" playsinline="" preload="auto"
+                aria-hidden="true" style="display: none;"></video></div>
+            <div class="case-frame__safe" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+            <div class="case-cover" style="">
+              <div class="case-cover__content">
+                <div class="case-crest"><span class="case-funds"><span class="case-fund" aria-hidden="true"
+                      style="aspect-ratio: 1612 / 213; mask-image: url(&quot;./Vectorlogos-1.svg&quot;);"></span><span
+                      class="case-fund" aria-hidden="true"
+                      style="aspect-ratio: 622 / 288; mask-image: url(&quot;./Vectorlogos.svg&quot;);"></span></span><img
+                    class="case-logo case-logo--mark" alt="" aria-hidden="true"
+                    src="./assets/images/aspect-logo-b1061b05.svg" style="aspect-ratio: 1476 / 484;"><span
+                    class="case-funds"><span class="case-fund" aria-hidden="true"
+                      style="aspect-ratio: 772 / 273; mask-image: url(&quot;./Unionlogos.svg&quot;);"></span><span
+                      class="case-fund" aria-hidden="true"
+                      style="aspect-ratio: 1078 / 288; mask-image: url(&quot;./Vectorlogos-2.svg&quot;);"></span></span>
+                </div>
+                <h2 class="case-title--editorial"><span class="case-title-line">SFMS</span><span
+                    class="case-title-line"><em class="case-title-italic">System</em></span></h2>
+                <div class="case-tags"><span class="case-tag">#DOT NET Core</span><span
+                    class="case-tag">#MySQL</span><span class="case-tag">#Enterprise</span></div><button
+                  class="case-button" type="button" tabindex="0" data-click-bounce="true">Deep dive</button>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section aria-label="Selected product design case 2" class="case-section" data-case-index="1"
+          data-case-id="ai-shopping-assistant" style="z-index: 6; --case-ink: #1f9e5a; --case-reveal: 0.000;">
+          <div class="case-blowout" aria-hidden="true" style="display: none;">
+            <div class="case-blowout__sheet"></div>
+            <div class="case-blowout__outer"></div>
+            <div class="case-blowout__inner"></div><span class="case-blowout__tick case-blowout__tick--t"></span><span
+              class="case-blowout__tick case-blowout__tick--b"></span><span
+              class="case-blowout__tick case-blowout__tick--l"></span><span
+              class="case-blowout__tick case-blowout__tick--r"></span>
+          </div>
+          <div class="case-frame"><span class="case-number" aria-hidden="true">case 02</span>
+            <div class="case-phone-mask" aria-hidden="true" style="display: none;"><video class="case-phone-video"
+                src="./aida-phone-cover.mp4?v=7" playsinline="" preload="auto" aria-hidden="true"></video><video
+                class="case-phone-video" src="./aida-phone-cover-reversed.mp4?v=7" playsinline="" preload="auto"
+                aria-hidden="true" style="display: none;"></video></div>
+            <div class="case-frame__safe" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+            <div class="case-cover" style="">
+              <div class="case-cover__content">
+                <div class="case-crest"><span class="case-funds"></span><img class="case-logo" alt="" aria-hidden="true"
+                    src="./assets/images/case1-logo-8b37a487.svg"><span class="case-funds"></span></div>
+                <h2><span class="case-title-line">API Rescue Lab</span></h2>
+                <div class="case-tags"><span class="case-tag">#iOS/Android</span><span class="case-tag">#ASPDOT NET
+                    Core</span><span class="case-tag">#React</span></div><button class="case-button" type="button"
+                  tabindex="0" data-click-bounce="true">Deep dive</button>
+              </div>
+            </div>
+          </div>
+        </section>
+        <div class="case-divider-pin" aria-hidden="true"></div>
+        <section aria-label="Selected product design case 3" class="case-section" data-case-index="2"
+          data-case-id="ai-organizer" style="z-index: 7; --case-ink: #e5731d; --case-reveal: 0.000;">
+          <div class="case-blowout" aria-hidden="true" style="display: none;">
+            <div class="case-blowout__sheet"></div>
+            <div class="case-blowout__outer"></div>
+            <div class="case-blowout__inner"></div><span class="case-blowout__tick case-blowout__tick--t"></span><span
+              class="case-blowout__tick case-blowout__tick--b"></span><span
+              class="case-blowout__tick case-blowout__tick--l"></span><span
+              class="case-blowout__tick case-blowout__tick--r"></span>
+          </div>
+          <div class="case-frame"><span class="case-number" aria-hidden="true">case 03</span>
+            <div class="case-phone-mask" aria-hidden="true" style="display: none;"><video class="case-phone-video"
+                src="./recall-phone.mp4?v=7" playsinline="" preload="auto" aria-hidden="true"></video><video
+                class="case-phone-video" src="./recall-phone-reversed.mp4?v=7" playsinline="" preload="auto"
+                aria-hidden="true" style="display: none;"></video></div>
+            <div class="case-frame__safe" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+            <div class="case-cover" style="">
+              <div class="case-cover__content">
+                <div class="case-crest"><span class="case-funds"></span><img class="case-logo case-logo--mark" alt=""
+                    aria-hidden="true" src="./assets/images/recall-c3b2f584.svg" style="aspect-ratio: 343 / 94;"><span
+                    class="case-funds"></span></div>
+                <h2>RMA Flow Engine</h2>
+                <div class="case-tags"><span class="case-tag">#Workflow Automation</span><span
+                    class="case-tag">#C#</span></div><button class="case-button" type="button" tabindex="0"
+                  data-click-bounce="true">Deep dive</button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="footer-reveal">
+        <footer class="site-footer" aria-label="Footer">
+          <div class="footer-contact" aria-label="Footer contact links"><button class="email-copy footer-email"
+              type="button" data-click-burst="true"><span>ritesh.parmar1599@gmail.com</span></button><a
+              class="social-link footer-social" href="https://github.com/Riteshparmar15" target="_blank"
+              rel="noreferrer" aria-label="GitHub" data-click-bounce="true"><img aria-hidden="true" alt=""
+                src="./icons/github.svg"></a><a class="social-link footer-social"
+              href="https://www.linkedin.com/in/ritesh-parmar-13ab7a23a/" target="_blank" rel="noreferrer"
+              aria-label="LinkedIn" data-click-bounce="true"><img aria-hidden="true" alt=""
+                src="./assets/images/linkedin-40d047b6.svg"></a></div><svg aria-hidden="true" class="footer-logo"
+            data-click-burst="true" fill="none" viewBox="0 0 24 22" xmlns="http://www.w3.org/2000/svg">
+            <g class="footer-logo__part footer-logo__part--s">
+              <path d="M0 0H8.5L11 2.5V8.5L8.5 11H0V0ZM3.2 3.2H7.8V7.8H3.2V3.2Z" fill="currentColor"></path>
+              <path d="M0 11H3.2V22H0V11ZM3.2 11H7.5L11 22H7.2L4.6 14.5H3.2V22H0V11Z" fill="currentColor"></path>
+              <rect class="footer-logo__hit" x="0" y="0" width="11" height="22"></rect>
+            </g>
+            <g class="footer-logo__part footer-logo__part--zero">
+              <path d="M13 0H21.5L24 2.5V10.5L21.5 13H16.2V22H13V0ZM16.2 3.2H20.8V9.8H16.2V3.2Z" fill="currentColor"
+                fill-rule="evenodd"></path>
+              <rect class="footer-logo__hit" x="13" y="0" width="11" height="22"></rect>
+            </g>
+          </svg>
+          <p class="footer-year" data-click-burst="true">2026</p>
+        </footer>
+      </div>
+    </main>
+  </div>
+</body>
+
+</html>

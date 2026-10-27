@@ -1,0 +1,11 @@
+{
+  "name": "ritesh-parmar-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Ritesh Parmar \u2014 DOT NET Backend Developer Portfolio",
+  "scripts": {
+    "dev": "npx serve -s -p 4173 .",
+    "preview": "npx serve -s -p 4173 .",
+    "start": "npx serve -s -p 4173 ."
+  }
+}
